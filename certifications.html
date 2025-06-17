@@ -584,12 +584,12 @@
             }
         }
 
-        /* Footer - Fixed Size */
+        /* Footer */
         .footer {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             border-radius: 20px;
-            padding: 25px 30px;
+            padding: 30px;
             text-align: center;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             margin-top: 30px;
@@ -599,14 +599,12 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 15px;
-            max-width: 800px;
-            margin: 0 auto;
+            gap: 20px;
         }
 
         .social-links {
             display: flex;
-            gap: 15px;
+            gap: 20px;
             justify-content: center;
             flex-wrap: wrap;
         }
@@ -614,16 +612,15 @@
         .social-link {
             display: flex;
             align-items: center;
-            gap: 6px;
-            padding: 8px 16px;
+            gap: 8px;
+            padding: 10px 20px;
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
             text-decoration: none;
-            border-radius: 20px;
+            border-radius: 25px;
             font-weight: 600;
-            font-size: 0.85em;
+            font-size: 0.9em;
             transition: all 0.3s ease;
-            white-space: nowrap;
         }
 
         .social-link:hover {
@@ -631,26 +628,18 @@
             box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
         }
 
-        .social-link i {
-            font-size: 1em;
-        }
-
         .footer-text {
             color: #666;
-            font-size: 0.8em;
-            line-height: 1.4;
-        }
-
-        .footer-text p {
-            margin: 3px 0;
+            font-size: 0.9em;
+            margin-top: 10px;
         }
 
         .footer-divider {
-            width: 60%;
+            width: 100%;
             height: 2px;
             background: linear-gradient(135deg, #667eea, #764ba2);
             border-radius: 1px;
-            margin: 10px 0;
+            margin: 15px 0;
         }
 
         /* Responsive */
@@ -702,41 +691,15 @@
                 padding: 0 20px 25px;
             }
 
-            .cert-summary {
-                padding: 0 20px 20px;
-            }
-
-            /* Footer Mobile Optimization */
-            .footer {
-                padding: 20px;
-                margin-top: 20px;
-            }
-
-            .footer-content {
-                gap: 12px;
-            }
-
             .social-links {
-                gap: 10px;
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: center;
+                flex-direction: column;
+                gap: 15px;
             }
 
             .social-link {
-                padding: 8px 12px;
-                font-size: 0.8em;
-                border-radius: 18px;
-                min-width: auto;
-            }
-
-            .footer-text {
-                font-size: 0.75em;
-            }
-
-            .footer-divider {
-                width: 80%;
-                margin: 8px 0;
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
             }
         }
     </style>
@@ -1111,100 +1074,7 @@
                             <span class="skill-tag purple">Data Visualization</span>
                         </div>
                     </div>
-                </div>
-
-                <!-- Certificate 4: Oracle R12 -->
-                <div class="cert-card" onclick="openCertModal('cert4')">
-                    <div class="cert-header">
-                        <div class="cert-info">
-                            <h3>Oracle Apps R12 Financials Course</h3>
-                            <div class="cert-provider">Udemy (119.5 hours)</div>
-                            <div class="cert-date">July 15, 2024</div>
-                        </div>
-                        <div class="cert-icon">
-                            <i class="fas fa-database"></i>
-                        </div>
-                    </div>
-                    
-                    <div class="cert-image-container">
-                        <img src="https://via.placeholder.com/600x300/8B5CF6/ffffff?text=Oracle+R12" alt="Oracle R12 Certificate" class="cert-image">
-                        <div class="image-overlay">
-                            <i class="fas fa-search-plus"></i>
-                            <span>Click to view full certificate</span>
-                        </div>
-                    </div>
-                    
-                    <div class="cert-skills">
-                        <div class="skills-container">
-                            <span class="skill-tag purple">Oracle EBS R12</span>
-                            <span class="skill-tag orange">Financial Systems</span>
-                            <span class="skill-tag blue">ERP Implementation</span>
-                            <span class="skill-tag green">System Configuration</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Certificate 5: Python Fundamentals -->
-                <div class="cert-card" onclick="openCertModal('cert5')">
-                    <div class="cert-header">
-                        <div class="cert-info">
-                            <h3>Python Fundamentals in 90 Minutes</h3>
-                            <div class="cert-provider">WSCube Tech</div>
-                            <div class="cert-date">June 7, 2025</div>
-                        </div>
-                        <div class="cert-icon">
-                            <i class="fab fa-python"></i>
-                        </div>
-                    </div>
-                    
-                    <div class="cert-image-container">
-                        <img src="https://via.placeholder.com/600x300/3B82F6/ffffff?text=Python+Fundamentals" alt="Python Fundamentals Certificate" class="cert-image">
-                        <div class="image-overlay">
-                            <i class="fas fa-search-plus"></i>
-                            <span>Click to view full certificate</span>
-                        </div>
-                    </div>
-                    
-                    <div class="cert-skills">
-                        <div class="skills-container">
-                            <span class="skill-tag blue">Python Programming</span>
-                            <span class="skill-tag green">Data Analysis</span>
-                            <span class="skill-tag purple">Machine Learning</span>
-                            <span class="skill-tag orange">AI Foundation</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Certificate 6: Oracle RDBMS -->
-                <div class="cert-card" onclick="openCertModal('cert6')">
-                    <div class="cert-header">
-                        <div class="cert-info">
-                            <h3>Oracle RDBMS</h3>
-                            <div class="cert-provider">IndiaCan (Pearson Educomp)</div>
-                            <div class="cert-date">July 16, 2011</div>
-                        </div>
-                        <div class="cert-icon">
-                            <i class="fas fa-database"></i>
-                        </div>
-                    </div>
-                    
-                    <div class="cert-image-container">
-                        <img src="https://via.placeholder.com/600x300/EC4899/ffffff?text=Oracle+RDBMS" alt="Oracle RDBMS Certificate" class="cert-image">
-                        <div class="image-overlay">
-                            <i class="fas fa-search-plus"></i>
-                            <span>Click to view full certificate</span>
-                        </div>
-                    </div>
-                    
-                    <div class="cert-skills">
-                        <div class="skills-container">
-                            <span class="skill-tag pink">Oracle Database</span>
-                            <span class="skill-tag blue">SQL Programming</span>
-                            <span class="skill-tag green">Database Administration</span>
-                            <span class="skill-tag orange">Performance Tuning</span>
-                        </div>
-                    </div>
-                </div>
+                </div>            
             </div>
         </div>
 
@@ -1271,10 +1141,10 @@
             }
         }
 
-        // Certificate modal functions with real image paths
+        // Certificate modal functions
         const certificateImages = {
             'cert1': 'images/certificates/generative-ai-upgrad.jpg',
-            'cert2': 'images/certificates/python-ai-workshop.jpg', 
+            'cert2': 'images/certificates/python-ai-workshop.jpg',
             'cert3': 'images/certificates/data-analytics-learntube.jpeg',
             'cert4': 'images/certificates/oracle-r12-udemy.jpeg',
             'cert5': 'images/certificates/python-fundamentals-wscube.jpg',
