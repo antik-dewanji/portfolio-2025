@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications - Antik Kumar Dewanji</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 5px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        .header .subtitle {
+            font-size: 1em;
+            color: #666;
+        }
+
+        /* Navigation */
+        .nav-container {
+            background: white;
+            border-radius: 50px;
+            padding: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #666;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        .nav-btn:hover {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+        }
+
+        .nav-btn.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            box-shadow: 0 3px 10px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Content */
+        .content {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-title {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        .publications-list {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .publication-card {
+            background: #f8f9fa;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .publication-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(135deg, #764ba2, #667eea);
+        }
+
+        .publication-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+
+        .publication-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .publication-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #764ba2, #667eea);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .publication-meta {
+            flex: 1;
+        }
+
+        .publication-number {
+            font-size: 2em;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .publication-title {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .publication-institution {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 1.05em;
+        }
+
+        .publication-date {
+            color: #888;
+            font-size: 0.95em;
+            font-weight: 500;
+        }
+
+        .publication-description {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            font-size: 1.05em;
+        }
+
+        .publication-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .detail-section {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .detail-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1em;
+        }
+
+        .detail-title i {
+            color: #667eea;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tech-tag {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .features-list li {
+            padding: 5px 0;
+            color: #666;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .features-list li::before {
+            content: '▸';
+            color: #667eea;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .publication-status {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .status-completed {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-documented {
+            background: #cce5ff;
+            color: #0066cc;
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            font-size: 0.95em;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .summary-section {
+            margin-top: 50px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 20px;
+            padding: 30px;
+            color: white;
+            text-align: center;
+        }
+
+        .summary-title {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .summary-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .summary-number {
+            font-size: 2.2em;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .summary-label {
+            font-size: 1em;
+            opacity: 0.9;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .header {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .nav-btn {
+                padding: 10px 16px;
+                font-size: 13px;
+            }
+
+            .content {
+                padding: 25px;
+            }
+
+            .page-title {
+                font-size: 2em;
+            }
+
+            .publication-card {
+                padding: 25px;
+            }
+
+            .publication-header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .publication-details {
+                grid-template-columns: 1fr;
+            }
+
+            .summary-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>Antik Kumar Dewanji</h1>
+            <p class="subtitle">Oracle ERP Specialist | Generative AI Expert | Government IT Professional</p>
+        </header>
+
+        <!-- Navigation -->
+        <div class="nav-container">
+            <nav class="nav">
+                <button class="nav-btn" onclick="navigateToPage('about')">About</button>
+                <button class="nav-btn" onclick="navigateToPage('experience')">Experience</button>
+                <button class="nav-btn" onclick="navigateToPage('projects')">Projects</button>
+                <button class="nav-btn" onclick="navigateToPage('skills')">Skills</button>
+                <button class="nav-btn" onclick="navigateToPage('certifications')">Certifications</button>
+                <button class="nav-btn active" onclick="navigateToPage('publications')">Publications</button>
+            </nav>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <h1 class="page-title">Publications & Project Reports</h1>
+            
+            <div class="publications-list">
+                <!-- Publication 1 -->
+                <div class="publication-card">
+                    <div class="publication-header">
+                        <div class="publication-icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div class="publication-meta">
+                            <div class="publication-number">01</div>
+                            <div class="publication-title">JEXPO COUNSELLING PROJECT</div>
+                            <div class="publication-institution">A.P.C. RAY POLYTECHNIC (DIPLOMA)</div>
+                            <div class="publication-date">June 2009</div>
+                        </div>
+                    </div>
+                    
+                    <span class="publication-status status-completed">Project Completed</span>
+                    
+                    <div class="publication-description">
+                        Comprehensive project report documenting the development and implementation of the JEXPO (Joint Entrance Examination Polytechnic) counseling system. The project utilized Visual Basic 6.0 for front-end development and Microsoft Access for database management, creating an efficient admission counseling platform for polytechnic institutions.
+                    </div>
+                    
+                    <div class="publication-details">
+                        <div class="detail-section">
+                            <div class="detail-title">
+                                <i class="fas fa-code"></i>
+                                Technologies Used
+                            </div>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Visual Basic 6.0</span>
+                                <span class="tech-tag">Microsoft Access</span>
+                                <span class="tech-tag">Database Design</span>
+                            </div>
+                        </div>
+                        
+                        <div class="detail-section">
+                            <div class="detail-title">
+                                <i class="fas fa-star"></i>
+                                Key Features
+                            </div>
+                            <ul class="features-list">
+                                <li>Student admission management</li>
+                                <li>Counseling workflow automation</li>
+                                <li>Database integration</li>
+                                <li>Reporting system</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="download-btn">
+                        <i class="fas fa-download"></i>
+                        View Project Report
+                    </a>
+                </div>
+
+                <!-- Publication 2 -->
+                <div class="publication-card">
+                    <div class="publication-header">
+                        <div class="publication-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="publication-meta">
+                            <div class="publication-number">02</div>
+                            <div class="publication-title">THE LIBRARY MANAGEMENT SYSTEM</div>
+                            <div class="publication-institution">Swami Vivekananda Institute Of Science & Technology (B.Tech)</div>
+                            <div class="publication-date">April 2013</div>
+                        </div>
+                    </div>
+                    
+                    <span class="publication-status status-documented">Documented</span>
+                    
+                    <div class="publication-description">
+                        Detailed technical documentation covering the complete development lifecycle of a library management system using modern web technologies. The project encompasses comprehensive book inventory management, member registration, lending operations, and reporting functionalities using web-based technologies.
+                    </div>
+                    
+                    <div class="publication-details">
+                        <div class="detail-section">
+                            <div class="detail-title">
+                                <i class="fas fa-code"></i>
+                                Technologies Used
+                            </div>
+                            <div class="tech-tags">
+                                <span class="tech-tag">PHP</span>
+                                <span class="tech-tag">MySQL</span>
+                                <span class="tech-tag">XAMPP</span>
+                                <span class="tech-tag">HTML/CSS</span>
+                                <span class="tech-tag">JavaScript</span>
+                            </div>
+                        </div>
+                        
+                        <div class="detail-section">
+                            <div class="detail-title">
+                                <i class="fas fa-star"></i>
+                                Key Features
+                            </div>
+                            <ul class="features-list">
+                                <li>Book inventory management</li>
+                                <li>Member registration system</li>
+                                <li>Lending/return tracking</li>
+                                <li>Fine calculation</li>
+                                <li>Comprehensive reporting</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="download-btn">
+                        <i class="fas fa-download"></i>
+                        View Documentation
+                    </a>
+                </div>
+
+                <!-- Publication 3 -->
+                <div class="publication-card">
+                    <div class="publication-header">
+                        <div class="publication-icon">
+                            <i class="fas fa-hospital"></i>
+                        </div>
+                        <div class="publication-meta">
+                            <div class="publication-number">03</div>
+                            <div class="publication-title">HOSPITAL MANAGEMENT SYSTEM</div>
+                            <div class="publication-institution">INDIACAN Summer Training Program</div>
+                            <div class="publication-date">June 2011 to July 2011</div>
+                        </div>
+                    </div>
+                    
+                    <span class="publication-status status-completed">Training Project</span>
+                    
+                    <div class="publication-description">
+                        Technical project report documenting the design and development of a comprehensive hospital management system using Oracle 10g Enterprise Edition. The system covers patient management, appointment scheduling, medical records maintenance, and billing processes, providing a complete healthcare management solution.
+                    </div>
+                    
+                    <div class="publication-details">
+                        <div class="detail-section">
+                            <div class="detail-title">
+                                <i class="fas fa-code"></i>
+                                Technologies Used
+                            </div>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Oracle 10g Enterprise</span>
+                                <span class="tech-tag">PL/SQL</span>
+                                <span class="tech-tag">SQL</span>
+                                <span class="tech-tag">Database Design</span>
+                            </div>
+                        </div>
+                        
+                        <div class="detail-section">
+                            <div class="detail-title">
+                                <i class="fas fa-star"></i>
+                                Key Features
+                            </div>
+                            <ul class="features-list">
+                                <li>Patient management system</li>
+                                <li>Appointment scheduling</li>
+                                <li>Medical records tracking</li>
+                                <li>Billing system integration</li>
+                                <li>Doctor and staff management</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="download-btn">
+                        <i class="fas fa-download"></i>
+                        View Technical Report
+                    </a>
+                </div>
+
+                <!-- Publication 4 -->
+                <div class="publication-card">
+                    <div class="publication-header">
+                        <div class="publication-icon">
+                            <i class="fas fa-school"></i>
+                        </div>
+                        <div class="publication-meta">
+                            <div class="publication-number">04</div>
+                            <div class="publication-title">INSTITUTE MANAGEMENT SYSTEM</div>
+                            <div class="publication-institution">UCDS Training Program</div>
+                            <div class="publication-date">June 2013 to April 2014</div>
+                        </div>
+                    </div>
+                    
+                    <span class="publication-status status-documented">Comprehensive Documentation</span>
+                    
+                    <div class="publication-description">
+                        Comprehensive project documentation for an integrated institute management system covering academic operations and administrative functions. The system manages various aspects of educational institute operations including student information, faculty management, examination systems, and fee management using modern web technologies.
+                    </div>
+                    
+                    <div class="publication-details">
+                        <div class="detail-section">
+                            <div class="detail-title">
+                                <i class="fas fa-code"></i>
+                                Technologies Used
+                            </div>
+                            <div class="tech-tags">
+                                <span class="tech-tag">PHP</span>
+                                <span class="tech-tag">MySQL</span>
+                                <span class="tech-tag">XAMPP</span>
+                                <span class="tech-tag">Web Development</span>
+                            </div>
+                        </div>
+                        
+                        <div class="detail-section">
+                            <div class="detail-title">
+                                <i class="fas fa-star"></i>
+                                Key Features
+                            </div>
+                            <ul class="features-list">
+                                <li>Student information system</li>
+                                <li>Faculty management</li>
+                                <li>Examination management</li>
+                                <li>Fee management system</li>
+                                <li>Attendance tracking</li>
+                                <li>Result management</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="download-btn">
+                        <i class="fas fa-download"></i>
+                        View Project Documentation
+                    </a>
+                </div>
+
+                <!-- Publication 5 -->
+                <div class="publication-card">
+                    <div class="publication-header">
+                        <div class="publication-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="publication-meta">
+                            <div class="publication-number">05</div>
+                            <div class="publication-title">GENERATIVE AI IMPLEMENTATION STUDY</div>
+                            <div class="publication-institution">upGrad + Microsoft Certification Program</div>
+                            <div class="publication-date">2024 - 2025</div>
+                        </div>
+                    </div>
+                    
+                    <span class="publication-status status-completed">Research Completed</span>
+                    
+                    <div class="publication-description">
+                        Advanced research documentation on Generative AI foundations and practical implementations. This comprehensive study covers AI model understanding, prompt engineering techniques, business integration strategies, and ethical considerations in AI deployment within enterprise environments.
+                    </div>
+                    
+                    <div class="publication-details">
+                        <div class="detail-section">
+                            <div class="detail-title">
+                                <i class="fas fa-code"></i>
+                                Technologies Used
+                            </div>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Generative AI</span>
+                                <span class="tech-tag">Machine Learning</span>
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">AI Frameworks</span>
+                            </div>
+                        </div>
+                        
+                        <div class="detail-section">
+                            <div class="detail-title">
+                                <i class="fas fa-star"></i>
+                                Research Areas
+                            </div>
+                            <ul class="features-list">
+                                <li>AI model implementation</li>
+                                <li>Prompt engineering</li>
+                                <li>Business integration</li>
+                                <li>Ethical AI practices</li>
+                                <li>Performance optimization</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="download-btn">
+                        <i class="fas fa-download"></i>
+                        View Research Paper
+                    </a>
+                </div>
+
+                <!-- Publication 6 -->
+                <div class="publication-card">
+                    <div class="publication-header">
+                        <div class="publication-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="publication-meta">
+                            <div class="publication-number">06</div>
+                            <div class="publication-title">DATA ANALYTICS WITH POWER BI - CASE STUDY</div>
+                            <div class="publication-institution">WSCube Tech - PhonePe Data Analysis</div>
+                            <div class="publication-date">2024 - 2025</div>
+                        </div>
+                    </div>
+                    
+                    <span class="publication-status status-completed">Case Study Completed</span>
+                    
+                    <div class="publication-description">
+                        Comprehensive case study documentation on advanced data analysis using Power BI for PhonePe transaction data. The study demonstrates practical applications of business intelligence, data visualization techniques, and deriving actionable insights from large-scale financial transaction datasets.
+                    </div>
+                    
+                    <div class="publication-details">
+                        <div class="detail-section">
+                            <div class="detail-title">
+                                <i class="fas fa-code"></i>
+                                Technologies Used
+                            </div>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Power BI</span>
+                                <span class="tech-tag">Data Analysis</span>
+                                <span class="tech-tag">DAX</span>
+                                <span class="tech-tag">Data Visualization</span>
+                            </div>
+                        </div>
+                        
+                        <div class="detail-section">
+                            <div class="detail-title">
+                                <i class="fas fa-star"></i>
+                                Analysis Areas
+                            </div>
+                            <ul class="features-list">
+                                <li>Transaction pattern analysis</li>
+                                <li>Geographic data visualization</li>
+                                <li>Trend forecasting</li>
+                                <li>KPI development</li>
+                                <li>Dashboard creation</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="download-btn">
+                        <i class="fas fa-download"></i>
+                        View Case Study
+                    </a>
+                </div>
+            </div>
+
+            <!-- Summary Section -->
+            <div class="summary-section">
+                <h2 class="summary-title">Publication Summary</h2>
+                <p>A comprehensive collection of technical documentation, project reports, and research studies spanning over 16 years of professional experience in IT, database management, and emerging technologies.</p>
+                
+                <div class="summary-grid">
+                    <div class="summary-item">
+                        <div class="summary-number">6</div>
+                        <div class="summary-label">Publications</div>
+                    </div>
+                    
+                    <div class="summary-item">
+                        <div class="summary-number">4</div>
+                        <div class="summary-label">Project Reports</div>
+                    </div>
+                    
+                    <div class="summary-item">
+                        <div class="summary-number">2</div>
+                        <div class="summary-label">Research Studies</div>
+                    </div>
+                    
+                    <div class="summary-item">
+                        <div class="summary-number">16+</div>
+                        <div class="summary-label">Years Documented</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Page navigation function
+        function navigateToPage(pageType) {
+            const pageUrls = {
+                'about': 'https://antik-dewanji.github.io/index.html',
+                'experience': 'https://antik-dewanji.github.io/experience.html',
+                'projects': 'https://antik-dewanji.github.io/projects.html',
+                'skills': 'https://antik-dewanji.github.io/skills.html',
+                'certifications': 'https://antik-dewanji.github.io/certifications.html',
+                'publications': 'https://antik-dewanji.github.io/publications.html'
+            };
+
+            const url = pageUrls[pageType];
+            if (url) {
+                if (pageType === 'publications') {
+                    console.log('Already on Publications page');
+                    return;
+                } else {
+                    window.location.href = url;
+                }
+            }
+        }
+
+        // Page load animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate publication cards
+            const publicationCards = document.querySelectorAll('.publication-card');
+            publicationCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(40px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'all 0.8s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+
+            // Animate summary numbers
+            setTimeout(() => {
+                const summaryNumbers = document.querySelectorAll('.summary-number');
+                summaryNumbers.forEach(numberElement => {
+                    const finalNumber = parseInt(numberElement.textContent);
+                    const isPlus = numberElement.textContent.includes('+');
+                    let currentNumber = 0;
+                    const increment = Math.ceil(finalNumber / 20);
+                    
+                    const timer = setInterval(() => {
+                        currentNumber += increment;
+                        if (currentNumber >= finalNumber) {
+                            currentNumber = finalNumber;
+                            clearInterval(timer);
+                        }
+                        numberElement.textContent = currentNumber + (isPlus ? '+' : '');
+                    }, 80);
+                });
+            }, 2000);
+
+            // Add hover effects to download buttons
+            const downloadBtns = document.querySelectorAll('.download-btn');
+            downloadBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    // Add download functionality here
+                    console.log('Download requested for:', this.textContent.trim());
+                    alert('Download functionality would be implemented here');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
