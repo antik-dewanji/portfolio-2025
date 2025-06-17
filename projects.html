@@ -752,7 +752,7 @@
     </div>
 
     <script>
-          // Page navigation function
+        // Page navigation function
         function navigateToPage(pageType) {
             const pageUrls = {
                 'about': 'https://antik-dewanji.github.io/portfolio-2025/index.html',
@@ -765,8 +765,8 @@
 
             const url = pageUrls[pageType];
             if (url) {
-                if (pageType === 'certifications') {
-                    console.log('Already on Certifications page');
+                if (pageType === 'projects') {
+                    console.log('Already on Projects page');
                     return;
                 } else {
                     window.location.href = url;
@@ -774,92 +774,11 @@
             }
         }
 
-        // Certificate data with local images
-        const certificateData = {
-            'generative-ai': {
-                title: 'Generative AI Foundations Certificate Program',
-                description: 'upGrad in collaboration with Microsoft - June 11th, 2025',
-                image: 'images/certificates/generative-ai-upgrad.jpg'
-            },
-            'python-fundamentals': {
-                title: 'Python Fundamentals in 90 Minutes',
-                description: 'WSCube Tech - June 7th, 2025',
-                image: 'images/certificates/python-fundamentals-wscube.jpg'
-            },
-            'oracle-r12': {
-                title: 'Oracle Apps R12 Financials Course',
-                description: 'Udemy (119.5 hours) - July 15, 2024',
-                image: 'images/certificates/oracle-r12-udemy.jpg'
-            },
-            'data-analytics': {
-                title: 'Data Analytics Assessment',
-                description: 'LearnTube by CareerNinja - July 25, 2024',
-                image: 'images/certificates/data-analytics-learntube.jpg'
-            },
-            'python-ai-workshop': {
-                title: 'Python Using AI Workshop',
-                description: 'AI for Techies - June 5th, 2025',
-                image: 'images/certificates/python-ai-workshop.jpg'
-            },
-            'ai-engineers': {
-                title: 'AI for Engineers',
-                description: 'Outskill - Recent Completion',
-                image: 'images/certificates/ai-engineers-outskill.jpg'
-            },
-            'power-bi': {
-                title: 'PhonePe Data Analysis with Power BI',
-                description: 'WSCube Tech - Recent Completion',
-                image: 'images/certificates/power-bi-analysis-wscube.jpg'
-            },
-            'oracle-rdbms': {
-                title: 'Oracle (RDBMS)',
-                description: 'IndiaCan (Pearson Educomp) - July 16, 2011',
-                image: 'images/certificates/oracle-rdbms-indiacan.jpg'
-            }
-        };
-
-        // Open certificate modal
-        function openCertModal(certType) {
-            const modal = document.getElementById('certificateModal');
-            const modalImage = document.getElementById('modalImage');
-            const modalTitle = document.getElementById('modalTitle');
-            const modalDescription = document.getElementById('modalDescription');
-            
-            const certInfo = certificateData[certType];
-            if (certInfo && modal) {
-                modalTitle.textContent = certInfo.title;
-                modalDescription.textContent = certInfo.description;
-                modalImage.src = certInfo.image;
-                modalImage.alt = certInfo.title;
-                modal.style.display = 'block';
-                
-                // Fallback placeholder if image fails to load
-                modalImage.onerror = function() {
-                    this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDQwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik0xNzUgMTI1SDE3OFYxMjhIMTc1VjEyNVpNMTc1IDEzMUgxNzhWMTM0SDE3NVYxMzFaTTE3NSAxMzdIMTc4VjE0MEgxNzVWMTM3Wk0xODEgMTI1SDE4NFYxMjhIMTgxVjEyNVpNMTgxIDEzMUgxODRWMTM0SDE4MVYxMzFaTTE4MSAxMzdIMTg0VjE0MEgxODFWMTM3Wk0xODcgMTI1SDE5MFYxMjhIMTg3VjEyNVpNMTg3IDEzMUgxOTBWMTM0SDE4N1YxMzFaTTE4NyAxMzdIMTkwVjE0MEgxODdWMTM3WiIgZmlsbD0iIzlDQTNBRiIvPgo8dGV4dCB4PSIyMDAiIHk9IjE2MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzZCNzI4MCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0Ij5DZXJ0aWZpY2F0ZSBJbWFnZTwvdGV4dD4KPHR4dCB4PSIyMDAiIHk9IjE4MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzlDQTNBRiIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIj5VcGxvYWQgaW1hZ2UgdG8gdmlldyBjZXJ0aWZpY2F0ZTwvdGV4dD4KPC9zdmc+';
-                    this.style.maxHeight = '300px';
-                };
-            }
-        }
-
-        // Close certificate modal
-        function closeCertModal() {
-            const modal = document.getElementById('certificateModal');
-            modal.style.display = 'none';
-        }
-
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            const modal = document.getElementById('certificateModal');
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
-        }
-
         // Page load animations
         document.addEventListener('DOMContentLoaded', function() {
-            // Animate certification cards
-            const certCards = document.querySelectorAll('.certification-card');
-            certCards.forEach((card, index) => {
+            // Animate project cards
+            const projectCards = document.querySelectorAll('.project-card');
+            projectCards.forEach((card, index) => {
                 card.style.opacity = '0';
                 card.style.transform = 'translateY(30px)';
                 
@@ -867,33 +786,8 @@
                     card.style.transition = 'all 0.6s ease';
                     card.style.opacity = '1';
                     card.style.transform = 'translateY(0)';
-                }, index * 150);
+                }, index * 100);
             });
-
-            // Animate statistics numbers
-            setTimeout(() => {
-                const statNumbers = document.querySelectorAll('.stat-number');
-                statNumbers.forEach(numberElement => {
-                    const finalText = numberElement.textContent;
-                    const finalNumber = parseInt(finalText);
-                    
-                    if (!isNaN(finalNumber)) {
-                        const isPlus = finalText.includes('+');
-                        const isDash = finalText.includes('-');
-                        let currentNumber = 0;
-                        const increment = Math.ceil(finalNumber / 25);
-                        
-                        const timer = setInterval(() => {
-                            currentNumber += increment;
-                            if (currentNumber >= finalNumber) {
-                                currentNumber = finalNumber;
-                                clearInterval(timer);
-                            }
-                            numberElement.textContent = currentNumber + (isPlus ? '+' : '') + (isDash ? '-25' : '');
-                        }, 60);
-                    }
-                });
-            }, 1500);
         });
     </script>
 </body>
