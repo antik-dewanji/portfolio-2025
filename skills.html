@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills - Antik Kumar Dewanji</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 5px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        .header .subtitle {
+            font-size: 1em;
+            color: #666;
+        }
+
+        /* Navigation */
+        .nav-container {
+            background: white;
+            border-radius: 50px;
+            padding: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #666;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        .nav-btn:hover {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+        }
+
+        .nav-btn.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            box-shadow: 0 3px 10px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Content */
+        .content {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-title {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .skill-category {
+            background: #f8f9fa;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .category-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: white;
+            margin-right: 15px;
+        }
+
+        .category-title {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-item {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .proficiency-section {
+            margin-top: 50px;
+        }
+
+        .proficiency-title {
+            font-size: 2em;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+            font-weight: 700;
+        }
+
+        .proficiency-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .proficiency-category {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .proficiency-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .proficiency-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: white;
+            margin-right: 12px;
+        }
+
+        .proficiency-category-title {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .skill-progress {
+            margin-bottom: 15px;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .skill-name span {
+            font-weight: 500;
+            color: #333;
+        }
+
+        .skill-percentage {
+            font-size: 0.9em;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 4px;
+            transition: width 1.5s ease;
+            width: 0;
+        }
+
+        .experience-level {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .experience-title {
+            font-size: 1.8em;
+            margin-bottom: 25px;
+            color: #333;
+            font-weight: 700;
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .experience-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .experience-number {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .experience-label {
+            font-size: 1.1em;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .header {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .nav-btn {
+                padding: 10px 16px;
+                font-size: 13px;
+            }
+
+            .content {
+                padding: 25px;
+            }
+
+            .page-title {
+                font-size: 2em;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .skill-category {
+                padding: 20px;
+            }
+
+            .proficiency-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>Antik Kumar Dewanji</h1>
+            <p class="subtitle">Oracle ERP Specialist | Generative AI Expert | Government IT Professional</p>
+        </header>
+
+        <!-- Navigation -->
+        <div class="nav-container">
+            <nav class="nav">
+                <button class="nav-btn" onclick="navigateToPage('about')">About</button>
+                <button class="nav-btn" onclick="navigateToPage('experience')">Experience</button>
+                <button class="nav-btn" onclick="navigateToPage('projects')">Projects</button>
+                <button class="nav-btn active" onclick="navigateToPage('skills')">Skills</button>
+                <button class="nav-btn" onclick="navigateToPage('certifications')">Certifications</button>
+                <button class="nav-btn" onclick="navigateToPage('publications')">Publications</button>
+            </nav>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <h1 class="page-title">Technical Skills</h1>
+            
+            <!-- Skills Categories -->
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <div class="category-title">Database & ERP</div>
+                    </div>
+                    <div class="skills-list">
+                        <span class="skill-item">Oracle ERP Financials</span>
+                        <span class="skill-item">Oracle Database Admin</span>
+                        <span class="skill-item">Oracle SQL</span>
+                        <span class="skill-item">PL/SQL</span>
+                        <span class="skill-item">MySQL</span>
+                        <span class="skill-item">MS Access</span>
+                        <span class="skill-item">Database Design</span>
+                        <span class="skill-item">Data Migration</span>
+                        <span class="skill-item">Performance Tuning</span>
+                        <span class="skill-item">Backup & Recovery</span>
+                    </div>
+                <!-- Proficiency Levels -->
+            <div class="proficiency-section">
+                <h2 class="proficiency-title">Proficiency Levels</h2>
+                
+                <div class="proficiency-grid">
+                    <div class="proficiency-category">
+                        <div class="proficiency-header">
+                            <div class="proficiency-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <div class="proficiency-category-title">Database & ERP Systems</div>
+                        </div>
+                        
+                        <div class="skill-progress">
+                            <div class="skill-name">
+                                <span>Oracle ERP Financials</span>
+                                <span class="skill-percentage">95%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-width="95"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-progress">
+                            <div class="skill-name">
+                                <span>Oracle Database Administration</span>
+                                <span class="skill-percentage">90%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-width="90"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-progress">
+                            <div class="skill-name">
+                                <span>SQL & PL/SQL</span>
+                                <span class="skill-percentage">88%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-width="88"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-progress">
+                            <div class="skill-name">
+                                <span>MySQL</span>
+                                <span class="skill-percentage">85%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-width="85"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="proficiency-category">
+                        <div class="proficiency-header">
+                            <div class="proficiency-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="proficiency-category-title">Programming Languages</div>
+                        </div>
+                        
+                        <div class="skill-progress">
+                            <div class="skill-name">
+                                <span>PHP</span>
+                                <span class="skill-percentage">85%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-width="85"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-progress">
+                            <div class="skill-name">
+                                <span>Visual Basic</span>
+                                <span class="skill-percentage">80%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-width="80"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-progress">
+                            <div class="skill-name">
+                                <span>Python</span>
+                                <span class="skill-percentage">75%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-width="75"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-progress">
+                            <div class="skill-name">
+                                <span>Java</span>
+                                <span class="skill-percentage">70%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-width="70"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="proficiency-category">
+                        <div class="proficiency-header">
+                            <div class="proficiency-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="proficiency-category-title">AI & Data Analytics</div>
+                        </div>
+                        
+                        <div class="skill-progress">
+                            <div class="skill-name">
+                                <span>Generative AI</span>
+                                <span class="skill-percentage">85%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-width="85"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-progress">
+                            <div class="skill-name">
+                                <span>Power BI</span>
+                                <span class="skill-percentage">80%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-width="80"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-progress">
+                            <div class="skill-name">
+                                <span>Data Analytics</span>
+                                <span class="skill-percentage">78%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-width="78"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-progress">
+                            <div class="skill-name">
+                                <span>Machine Learning</span>
+                                <span class="skill-percentage">72%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-width="72"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="proficiency-category">
+                        <div class="proficiency-header">
+                            <div class="proficiency-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <div class="proficiency-category-title">Web Technologies</div>
+                        </div>
+                        
+                        <div class="skill-progress">
+                            <div class="skill-name">
+                                <span>HTML/CSS</span>
+                                <span class="skill-percentage">90%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-width="90"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-progress">
+                            <div class="skill-name">
+                                <span>JavaScript</span>
+                                <span class="skill-percentage">75%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-width="75"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-progress">
+                            <div class="skill-name">
+                                <span>jQuery</span>
+                                <span class="skill-percentage">70%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-width="70"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-progress">
+                            <div class="skill-name">
+                                <span>Web Development</span>
+                                <span class="skill-percentage">80%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-width="80"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Experience Statistics -->
+            <div class="experience-level">
+                <h2 class="experience-title">Professional Experience</h2>
+                
+                <div class="experience-grid">
+                    <div class="experience-card">
+                        <div class="experience-number">16+</div>
+                        <div class="experience-label">Years in IT</div>
+                    </div>
+                    
+                    <div class="experience-card">
+                        <div class="experience-number">14+</div>
+                        <div class="experience-label">Years Oracle DBA</div>
+                    </div>
+                    
+                    <div class="experience-card">
+                        <div class="experience-number">11+</div>
+                        <div class="experience-label">Years Government IT</div>
+                    </div>
+                    
+                    <div class="experience-card">
+                        <div class="experience-number">8+</div>
+                        <div class="experience-label">Certifications</div>
+                    </div>
+                    
+                    <div class="experience-card">
+                        <div class="experience-number">15+</div>
+                        <div class="experience-label">Projects Completed</div>
+                    </div>
+                    
+                    <div class="experience-card">
+                        <div class="experience-number">5+</div>
+                        <div class="experience-label">AI/ML Projects</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Page navigation function
+        function navigateToPage(pageType) {
+            const pageUrls = {
+                'about': 'https://antik-dewanji.github.io/index.html',
+                'experience': 'https://antik-dewanji.github.io/experience.html',
+                'projects': 'https://antik-dewanji.github.io/projects.html',
+                'skills': 'https://antik-dewanji.github.io/skills.html',
+                'certifications': 'https://antik-dewanji.github.io/certifications.html',
+                'publications': 'https://antik-dewanji.github.io/publications.html'
+            };
+
+            const url = pageUrls[pageType];
+            if (url) {
+                if (pageType === 'skills') {
+                    console.log('Already on Skills page');
+                    return;
+                } else {
+                    window.location.href = url;
+                }
+            }
+        }
+
+        // Page load animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate skill categories
+            const skillCategories = document.querySelectorAll('.skill-category');
+            skillCategories.forEach((category, index) => {
+                category.style.opacity = '0';
+                category.style.transform = 'translateY(30px)';
+                
+                setTimeout(() => {
+                    category.style.transition = 'all 0.6s ease';
+                    category.style.opacity = '1';
+                    category.style.transform = 'translateY(0)';
+                }, index * 150);
+            });
+
+            // Animate progress bars
+            setTimeout(() => {
+                const progressBars = document.querySelectorAll('.progress-fill');
+                progressBars.forEach((bar, index) => {
+                    const width = bar.getAttribute('data-width');
+                    setTimeout(() => {
+                        bar.style.width = width + '%';
+                    }, index * 100);
+                });
+            }, 1000);
+
+            // Animate experience cards
+            setTimeout(() => {
+                const experienceCards = document.querySelectorAll('.experience-card');
+                experienceCards.forEach((card, index) => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'scale(0.8)';
+                    
+                    setTimeout(() => {
+                        card.style.transition = 'all 0.5s ease';
+                        card.style.opacity = '1';
+                        card.style.transform = 'scale(1)';
+                    }, index * 100);
+                });
+            }, 1500);
+
+            // Animate numbers counting up
+            setTimeout(() => {
+                const experienceNumbers = document.querySelectorAll('.experience-number');
+                experienceNumbers.forEach(numberElement => {
+                    const finalNumber = parseInt(numberElement.textContent);
+                    const isPlus = numberElement.textContent.includes('+');
+                    let currentNumber = 0;
+                    const increment = Math.ceil(finalNumber / 30);
+                    
+                    const timer = setInterval(() => {
+                        currentNumber += increment;
+                        if (currentNumber >= finalNumber) {
+                            currentNumber = finalNumber;
+                            clearInterval(timer);
+                        }
+                        numberElement.textContent = currentNumber + (isPlus ? '+' : '');
+                    }, 50);
+                });
+            }, 2000);
+        });
+    </script>
+</body>
+</html>    <div class="skill-category">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="category-title">Programming Languages</div>
+                    </div>
+                    <div class="skills-list">
+                        <span class="skill-item">PHP</span>
+                        <span class="skill-item">Java</span>
+                        <span class="skill-item">Visual Basic</span>
+                        <span class="skill-item">Python</span>
+                        <span class="skill-item">SQL</span>
+                        <span class="skill-item">HTML/CSS</span>
+                        <span class="skill-item">JavaScript</span>
+                        <span class="skill-item">jQuery</span>
+                        <span class="skill-item">Shell Scripting</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="category-title">AI & Machine Learning</div>
+                    </div>
+                    <div class="skills-list">
+                        <span class="skill-item">Generative AI</span>
+                        <span class="skill-item">Python AI</span>
+                        <span class="skill-item">Machine Learning</span>
+                        <span class="skill-item">Data Science</span>
+                        <span class="skill-item">AI Model Training</span>
+                        <span class="skill-item">Prompt Engineering</span>
+                        <span class="skill-item">AI Integration</span>
+                        <span class="skill-item">Deep Learning</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="category-title">Data Analytics & BI</div>
+                    </div>
+                    <div class="skills-list">
+                        <span class="skill-item">Power BI</span>
+                        <span class="skill-item">Data Analytics</span>
+                        <span class="skill-item">Data Visualization</span>
+                        <span class="skill-item">DAX</span>
+                        <span class="skill-item">Business Intelligence</span>
+                        <span class="skill-item">Statistical Analysis</span>
+                        <span class="skill-item">KPI Development</span>
+                        <span class="skill-item">Report Generation</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <div class="category-title">System Administration</div>
+                    </div>
+                    <div class="skills-list">
+                        <span class="skill-item">Oracle ERP Administration</span>
+                        <span class="skill-item">Database Administration</span>
+                        <span class="skill-item">System Configuration</span>
+                        <span class="skill-item">Server Management</span>
+                        <span class="skill-item">Security Management</span>
+                        <span class="skill-item">User Management</span>
+                        <span class="skill-item">System Monitoring</span>
+                        <span class="skill-item">Troubleshooting</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <div class="category-title">Tools & Technologies</div>
+                    </div>
+                    <div class="skills-list">
+                        <span class="skill-item">XAMPP</span>
+                        <span class="skill-item">MS Excel Advanced</span>
+                        <span class="skill-item">Photoshop</span>
+                        <span class="skill-item">Video Editing</span>
+                        <span class="skill-item">Photography</span>
+                        <span class="skill-item">Git</span>
+                        <span class="skill-item">API Integration</span>
+                        <span class="skill-item">Web Development</span>
+                    </div>
+                </div>
+            </div>
