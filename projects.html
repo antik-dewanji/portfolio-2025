@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Antik Kumar Dewanji</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 5px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        .header .subtitle {
+            font-size: 1em;
+            color: #666;
+        }
+
+        /* Navigation */
+        .nav-container {
+            background: white;
+            border-radius: 50px;
+            padding: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #666;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        .nav-btn:hover {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+        }
+
+        .nav-btn.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            box-shadow: 0 3px 10px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Content */
+        .content {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-title {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .project-card {
+            background: #f8f9fa;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+
+        .project-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .project-title {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .project-meta {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        .project-duration {
+            color: #888;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        .project-description {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .tech-stack {
+            margin-bottom: 20px;
+        }
+
+        .tech-stack h4 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tech-tag {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: 500;
+        }
+
+        .project-features {
+            margin-top: 20px;
+        }
+
+        .project-features h4 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .project-features ul {
+            padding-left: 20px;
+            color: #666;
+        }
+
+        .project-features li {
+            margin-bottom: 5px;
+            line-height: 1.5;
+        }
+
+        .project-status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .status-completed {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-training {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .category-section {
+            margin-bottom: 50px;
+        }
+
+        .category-title {
+            font-size: 1.8em;
+            color: #333;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .header {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .nav-btn {
+                padding: 10px 16px;
+                font-size: 13px;
+            }
+
+            .content {
+                padding: 25px;
+            }
+
+            .page-title {
+                font-size: 2em;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .project-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>Antik Kumar Dewanji</h1>
+            <p class="subtitle">Oracle ERP Specialist | Generative AI Expert | Government IT Professional</p>
+        </header>
+
+        <!-- Navigation -->
+        <div class="nav-container">
+            <nav class="nav">
+                <button class="nav-btn" onclick="navigateToPage('about')">About</button>
+                <button class="nav-btn" onclick="navigateToPage('experience')">Experience</button>
+                <button class="nav-btn active" onclick="navigateToPage('projects')">Projects</button>
+                <button class="nav-btn" onclick="navigateToPage('skills')">Skills</button>
+                <button class="nav-btn" onclick="navigateToPage('certifications')">Certifications</button>
+                <button class="nav-btn" onclick="navigateToPage('publications')">Publications</button>
+            </nav>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <h1 class="page-title">Projects & Training</h1>
+            
+            <!-- Academic Projects -->
+            <div class="category-section">
+                <h2 class="category-title">
+                    <i class="fas fa-graduation-cap"></i>
+                    Academic Projects
+                </h2>
+                
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <span class="project-status status-completed">Completed</span>
+                        <div class="project-title">JEXPO Counseling Project</div>
+                        <div class="project-meta">A.P.C. RAY POLYTECHNIC (DIPLOMA)</div>
+                        <div class="project-duration">June 2009</div>
+                        <div class="project-description">
+                            Developed a comprehensive counseling system for JEXPO (Joint Entrance Examination Polytechnic) to streamline the admission process and automate counseling workflow for polytechnic admissions.
+                        </div>
+                        
+                        <div class="tech-stack">
+                            <h4><i class="fas fa-code"></i> Technologies Used:</h4>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Visual Basic 6.0</span>
+                                <span class="tech-tag">Microsoft Access</span>
+                                <span class="tech-tag">Database Design</span>
+                            </div>
+                        </div>
+
+                        <div class="project-features">
+                            <h4><i class="fas fa-star"></i> Key Features:</h4>
+                            <ul>
+                                <li>Book inventory management</li>
+                                <li>Member registration and management</li>
+                                <li>Lending and return tracking</li>
+                                <li>Fine calculation system</li>
+                                <li>Search and filter functionality</li>
+                                <li>Comprehensive reporting system</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Training Projects -->
+            <div class="category-section">
+                <h2 class="category-title">
+                    <i class="fas fa-laptop-code"></i>
+                    Training Projects
+                </h2>
+                
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-hospital"></i>
+                        </div>
+                        <span class="project-status status-training">Training Project</span>
+                        <div class="project-title">Hospital Management System</div>
+                        <div class="project-meta">INDIACAN Summer Training</div>
+                        <div class="project-duration">June 2011 - July 2011</div>
+                        <div class="project-description">
+                            Developed a comprehensive hospital management system using Oracle 10g Enterprise Edition covering patient records, appointment scheduling, medical records, and billing system.
+                        </div>
+                        
+                        <div class="tech-stack">
+                            <h4><i class="fas fa-code"></i> Technologies Used:</h4>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Oracle 10g Enterprise</span>
+                                <span class="tech-tag">PL/SQL</span>
+                                <span class="tech-tag">SQL</span>
+                                <span class="tech-tag">Database Design</span>
+                            </div>
+                        </div>
+
+                        <div class="project-features">
+                            <h4><i class="fas fa-star"></i> Key Features:</h4>
+                            <ul>
+                                <li>Patient management and registration</li>
+                                <li>Appointment scheduling system</li>
+                                <li>Medical records maintenance</li>
+                                <li>Billing and payment processing</li>
+                                <li>Doctor and staff management</li>
+                                <li>Inventory management for medicines</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-school"></i>
+                        </div>
+                        <span class="project-status status-training">Training Project</span>
+                        <div class="project-title">Institute Management System</div>
+                        <div class="project-meta">UCDS Training Program</div>
+                        <div class="project-duration">June 2013 - April 2014</div>
+                        <div class="project-description">
+                            Built an integrated system for managing various aspects of educational institute operations including student management, faculty administration, and examination systems.
+                        </div>
+                        
+                        <div class="tech-stack">
+                            <h4><i class="fas fa-code"></i> Technologies Used:</h4>
+                            <div class="tech-tags">
+                                <span class="tech-tag">PHP</span>
+                                <span class="tech-tag">MySQL</span>
+                                <span class="tech-tag">XAMPP</span>
+                                <span class="tech-tag">HTML/CSS</span>
+                                <span class="tech-tag">JavaScript</span>
+                            </div>
+                        </div>
+
+                        <div class="project-features">
+                            <h4><i class="fas fa-star"></i> Key Features:</h4>
+                            <ul>
+                                <li>Student information system</li>
+                                <li>Faculty management and scheduling</li>
+                                <li>Examination management system</li>
+                                <li>Fee management and tracking</li>
+                                <li>Attendance tracking system</li>
+                                <li>Result management and reporting</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Current AI Projects -->
+            <div class="category-section">
+                <h2 class="category-title">
+                    <i class="fas fa-robot"></i>
+                    AI & Data Analytics Projects
+                </h2>
+                
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <span class="project-status status-completed">Completed</span>
+                        <div class="project-title">Generative AI Implementation</div>
+                        <div class="project-meta">upGrad + Microsoft Certification Project</div>
+                        <div class="project-duration">2024 - 2025</div>
+                        <div class="project-description">
+                            Comprehensive study and implementation of Generative AI foundations including practical applications, model training, and integration with existing systems.
+                        </div>
+                        
+                        <div class="tech-stack">
+                            <h4><i class="fas fa-code"></i> Technologies Used:</h4>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Generative AI</span>
+                                <span class="tech-tag">Machine Learning</span>
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">AI Frameworks</span>
+                            </div>
+                        </div>
+
+                        <div class="project-features">
+                            <h4><i class="fas fa-star"></i> Key Learnings:</h4>
+                            <ul>
+                                <li>AI model understanding and implementation</li>
+                                <li>Prompt engineering techniques</li>
+                                <li>Integration with business applications</li>
+                                <li>Ethical AI considerations</li>
+                                <li>Performance optimization</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <span class="project-status status-completed">Completed</span>
+                        <div class="project-title">Data Analytics with Power BI</div>
+                        <div class="project-meta">WSCube Tech - PhonePe Data Analysis</div>
+                        <div class="project-duration">2024 - 2025</div>
+                        <div class="project-description">
+                            Advanced data analysis project using Power BI for PhonePe transaction data analysis, creating interactive dashboards and deriving business insights.
+                        </div>
+                        
+                        <div class="tech-stack">
+                            <h4><i class="fas fa-code"></i> Technologies Used:</h4>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Power BI</span>
+                                <span class="tech-tag">Data Analysis</span>
+                                <span class="tech-tag">DAX</span>
+                                <span class="tech-tag">Data Visualization</span>
+                            </div>
+                        </div>
+
+                        <div class="project-features">
+                            <h4><i class="fas fa-star"></i> Key Features:</h4>
+                            <ul>
+                                <li>Interactive dashboard creation</li>
+                                <li>Transaction pattern analysis</li>
+                                <li>Geographic data visualization</li>
+                                <li>Trend analysis and forecasting</li>
+                                <li>KPI monitoring and reporting</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-python"></i>
+                        </div>
+                        <span class="project-status status-completed">Completed</span>
+                        <div class="project-title">Python AI Fundamentals</div>
+                        <div class="project-meta">WSCube Tech & AI for Techies</div>
+                        <div class="project-duration">2024 - 2025</div>
+                        <div class="project-description">
+                            Comprehensive Python programming for AI and data science applications including machine learning implementations and AI-powered solutions.
+                        </div>
+                        
+                        <div class="tech-stack">
+                            <h4><i class="fas fa-code"></i> Technologies Used:</h4>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">AI Libraries</span>
+                                <span class="tech-tag">Data Science</span>
+                                <span class="tech-tag">Machine Learning</span>
+                            </div>
+                        </div>
+
+                        <div class="project-features">
+                            <h4><i class="fas fa-star"></i> Key Learnings:</h4>
+                            <ul>
+                                <li>Python fundamentals for AI</li>
+                                <li>Data manipulation and analysis</li>
+                                <li>Machine learning algorithms</li>
+                                <li>AI model implementation</li>
+                                <li>Data visualization techniques</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Government Projects -->
+            <div class="category-section">
+                <h2 class="category-title">
+                    <i class="fas fa-landmark"></i>
+                    Government & Enterprise Projects
+                </h2>
+                
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <span class="project-status status-completed">Ongoing</span>
+                        <div class="project-title">Oracle ERP Implementation</div>
+                        <div class="project-meta">Government Sector Projects</div>
+                        <div class="project-duration">2014 - Present</div>
+                        <div class="project-description">
+                            Large-scale Oracle ERP implementation and maintenance for government organizations including financial modules, procurement systems, and reporting frameworks.
+                        </div>
+                        
+                        <div class="tech-stack">
+                            <h4><i class="fas fa-code"></i> Technologies Used:</h4>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Oracle ERP</span>
+                                <span class="tech-tag">Oracle Financials</span>
+                                <span class="tech-tag">Database Administration</span>
+                                <span class="tech-tag">System Integration</span>
+                            </div>
+                        </div>
+
+                        <div class="project-features">
+                            <h4><i class="fas fa-star"></i> Key Responsibilities:</h4>
+                            <ul>
+                                <li>ERP system configuration and customization</li>
+                                <li>Financial module implementation</li>
+                                <li>Data migration and validation</li>
+                                <li>User training and support</li>
+                                <li>System maintenance and optimization</li>
+                                <li>Compliance and security management</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Page navigation function
+        function navigateToPage(pageType) {
+            const pageUrls = {
+                'about': 'https://antik-dewanji.github.io/index.html',
+                'experience': 'https://antik-dewanji.github.io/experience.html',
+                'projects': 'https://antik-dewanji.github.io/projects.html',
+                'skills': 'https://antik-dewanji.github.io/skills.html',
+                'certifications': 'https://antik-dewanji.github.io/certifications.html',
+                'publications': 'https://antik-dewanji.github.io/publications.html'
+            };
+
+            const url = pageUrls[pageType];
+            if (url) {
+                if (pageType === 'projects') {
+                    console.log('Already on Projects page');
+                    return;
+                } else {
+                    window.location.href = url;
+                }
+            }
+        }
+
+        // Page load animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const projectCards = document.querySelectorAll('.project-card');
+            projectCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 150);
+            });
+        });
+    </script>
+</body>
+</html>
+                                <li>Student admission management</li>
+                                <li>Counseling workflow automation</li>
+                                <li>Database integration and management</li>
+                                <li>Reporting and analytics</li>
+                                <li>User-friendly interface</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <span class="project-status status-completed">Completed</span>
+                        <div class="project-title">Library Management System</div>
+                        <div class="project-meta">Swami Vivekananda Institute Of Science & Technology (B.Tech)</div>
+                        <div class="project-duration">April 2013</div>
+                        <div class="project-description">
+                            Created a complete library management solution for tracking books, members, and lending operations using modern web technologies and database management.
+                        </div>
+                        
+                        <div class="tech-stack">
+                            <h4><i class="fas fa-code"></i> Technologies Used:</h4>
+                            <div class="tech-tags">
+                                <span class="tech-tag">PHP</span>
+                                <span class="tech-tag">MySQL</span>
+                                <span class="tech-tag">XAMPP</span>
+                                <span class="tech-tag">HTML/CSS</span>
+                                <span class="tech-tag">JavaScript</span>
+                            </div>
+                        </div>
+
+                        <div class="project-features">
+                            <h4><i class="fas fa-star"></i> Key Features:</h4>
+                            <ul>
